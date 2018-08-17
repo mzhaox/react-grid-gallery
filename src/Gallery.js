@@ -260,33 +260,37 @@ class Gallery extends Component {
       width: "100%"
     };
     return (
-        <div id={this.props.id}
-      className="ReactGridGallery"
-      ref={(c) => this._gallery = c}>
-        <iframe style={resizeIframeStyles}
-      ref={(c) => c && c.contentWindow
-         && c.contentWindow.addEventListener('resize', this.onResize) } />
-        {images}
-        <Lightbox
-      images={this.props.images}
-      backdropClosesModal={this.props.backdropClosesModal}
-      currentImage={this.state.currentImage}
-   preloadNextImage={this.props.preloadNextImage}
-      customControls={this.props.customControls}
-      enableKeyboardInput={this.props.enableKeyboardInput}
-      imageCountSeparator={this.props.imageCountSeparator}
-      isOpen={this.state.lightboxIsOpen}
-      onClickImage={this.getOnClickImageFn()}
-      onClickNext={this.getOnClickNextFn()}
-      onClickPrev={this.getOnClickPrevFn()}
-      showCloseButton={this.props.showCloseButton}
-      showImageCount={this.props.showImageCount}
-      onClose={this.closeLightbox}
-      width={this.props.lightboxWidth}
-      theme={this.props.theme}
-      onClickThumbnail={this.getOnClickLightboxThumbnailFn()}
-      showThumbnails={this.props.showLightboxThumbnails}
-        />
+        <div
+          id={this.props.id}
+          className="ReactGridGallery"
+          ref={(c) => this._gallery = c}
+        >
+          <iframe
+            style={resizeIframeStyles}
+            ref={(c) => c && c.contentWindow
+              && c.contentWindow.addEventListener('resize', this.onResize) }
+          />
+          {images}
+          <Lightbox
+            images={this.props.images}
+            backdropClosesModal={this.props.backdropClosesModal}
+            currentImage={this.state.currentImage}
+            preloadNextImage={this.props.preloadNextImage}
+            customControls={this.props.customControls}
+            enableKeyboardInput={this.props.enableKeyboardInput}
+            imageCountSeparator={this.props.imageCountSeparator}
+            isOpen={this.state.lightboxIsOpen}
+            onClickImage={this.getOnClickImageFn()}
+            onClickNext={this.getOnClickNextFn()}
+            onClickPrev={this.getOnClickPrevFn()}
+            showCloseButton={this.props.showCloseButton}
+            showImageCount={this.props.showImageCount}
+            onClose={this.closeLightbox}
+            width={this.props.lightboxWidth}
+            theme={this.props.theme}
+            onClickThumbnail={this.getOnClickLightboxThumbnailFn()}
+            showThumbnails={this.props.showLightboxThumbnails}
+          />
         </div>
     );
   }

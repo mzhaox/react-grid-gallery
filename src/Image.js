@@ -138,85 +138,104 @@ class Image extends Component {
     </div>;
 
     return (
-        <div className="tile"
-      key={"tile-"+this.props.index}
-      onMouseEnter={(e) => this.setState({hover: true})}
-      onMouseLeave={(e) => this.setState({hover: false})}
-      style={{
-        margin: this.props.margin,
-        WebkitUserSelect: "none",
-        position: "relative",
-        float: "left",
-        background: "#eee",
-        padding: "0px"}}>
+      // Title
+      <div
+        className="tile"
+        key={"tile-"+this.props.index}
+        onMouseEnter={(e) => this.setState({hover: true})}
+        onMouseLeave={(e) => this.setState({hover: false})}
+        style={{
+          margin: this.props.margin,
+          WebkitUserSelect: "none",
+          position: "relative",
+          float: "left",
+          background: "#eee",
+          padding: "0px"
+        }}
+      >
+        // Title icon bar
+        <div
+          className="tile-icon-bar"
+          key={"tile-icon-bar-"+this.props.index}
+          style={{
+            pointerEvents: "none",
+            opacity: 1,
+            position: "absolute",
+            height: "36px",
+            width: "100%"
+          }}
+        />
 
-        <div className="tile-icon-bar"
-      key={"tile-icon-bar-"+this.props.index}
-      style={{
-        pointerEvents: "none",
-        opacity: 1,
-        position: "absolute",
-        height: "36px",
-        width: "100%"}}>
+        
+        // Title bottom bar
+        <div
+          className="tile-bottom-bar"
+          key={"tile-bottom-bar-"+this.props.index}
+          style={{
+            padding: "2px",
+            pointerEvents: "none",
+            position: "absolute",
+            minHeight: "0px",
+            maxHeight: "160px",
+            width: "100%",
+            bottom: "0px",
+            overflow: "hidden"
+          }}
+        >
+          {tags}
         </div>
-
-        <div className="tile-bottom-bar"
-      key={"tile-bottom-bar-"+this.props.index}
-      style={{
-        padding: "2px",
-        pointerEvents: "none",
-        position: "absolute",
-        minHeight: "0px",
-        maxHeight: "160px",
-        width: "100%",
-        bottom: "0px",
-        overflow: "hidden"
-      }}>
-        {tags}
-      </div>
 
         {customOverlay}
 
-        <div className="tile-overlay"
-      key={"tile-overlay-"+this.props.index}
-      style={{
-        pointerEvents: "none",
-        opacity: 1,
-        position: "absolute",
-        height: "100%",
-        width: "100%",
-        background: (this.state.hover
-               && !this.props.item.isSelected
-               && this.props.isSelectable) ?
-          'linear-gradient(to bottom,rgba(0,0,0,0.26),transparent 56px,transparent)' : 'none'}}>
-        </div>
-
-        <div className="tile-viewport"
-      style={this.tileViewportStyle()}
-      key={"tile-viewport-"+this.props.index}
-      onClick={this.props.onClick ?
-           (e) => this.props.onClick.call(this, this.props.index, e) : null}>
-        <img
-      key={"img-"+this.props.index}
-      src={this.props.item.thumbnail}
-      alt={alt}
-      title={this.props.item.caption}
-      style={this.thumbnailStyle()} />
-        </div>
-        {this.props.item.thumbnailCaption && (
-            <div className="tile-description"
+        // Title overlay
+        <div
+          className="tile-overlay"
+          key={"tile-overlay-"+this.props.index}
           style={{
-            background: "white",
+            pointerEvents: "none",
+            opacity: 1,
+            position: "absolute",
             height: "100%",
             width: "100%",
-            margin: 0,
-            userSelect: "text",
-            WebkitUserSelect: "text",
-            MozUserSelect: "text",
-            overflow: "hidden"
-          }}>
-            {this.props.item.thumbnailCaption}
-          </div>
+            background: (this.state.hover
+                   && !this.props.item.isSelected
+                   && this.props.isSelectable) ?
+          'linear-gradient(to bottom,rgba(0,0,0,0.26),transparent 56px,transparent)' 
+              : 'none'
+          }}
+        />
+
+        <div
+          className="tile-viewport"
+          style={this.tileViewportStyle()}
+          key={"tile-viewport-"+this.props.index}
+          onClick={this.props.onClick ?
+               (e) => this.props.onClick.call(this, this.props.index, e) : null}
+        />
+            <img
+              key={"img-"+this.props.index}
+              src={this.props.item.thumbnail}
+              alt={alt}
+              title={this.props.item.caption}
+              style={this.thumbnailStyle()}
+            />
+        </div>
+          {this.props.item.thumbnailCaption && (
+            <div
+              className="tile-description"
+              style={{
+                background: "white",
+                height: "100%",
+                width: "100%",
+                margin: 0,
+                userSelect: "text",
+                WebkitUserSelect: "text",
+                MozUserSelect: "text",
+                overflow: "hidden"
+              }}
+            >
+              {this.props.item.thumbnailCaption}
+            </div>
         )}
       </div>
     );
